@@ -10,4 +10,3 @@ import {  get } from 'lodash'
 T();
 
 console.log(get({a: 1}, 'a'))
-export {};

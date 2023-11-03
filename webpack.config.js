@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLInlineCSSWebpackPlugin =
   require("html-inline-css-webpack-plugin").default;
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CriticalCssPlugin = require('critical-css-webpack-plugin')
+const CriticalCssPlugin = require("critical-css-webpack-plugin");
 
 // import path from "path";
 // import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -56,14 +56,14 @@ const config = {
   }, */
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
       minSize: 0,
       minRemainingSize: 0,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
       enforceSizeThreshold: 50000,
-      name: false,
+      // name: false,
       cacheGroups: {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -77,18 +77,18 @@ const config = {
         },
         utilities: {
           test: /[\\/]utils[\\/]/,
-          name: 'utilities',
-          chunks: 'all',
+          name: "utilities",
+          chunks: "all",
           priority: 0,
           minChunks: 1,
           reuseExistingChunk: true,
         },
-        css: {
-          name: "css",
-          test: /\.scss$/,
-          minChunks: 1,
-          enforce: true,
-        }
+        // css: {
+        //   name: "css",
+        //   test: /\.scss$/,
+        //   minChunks: 1,
+        //   enforce: true,
+        // }
       },
     },
     runtimeChunk: true,
@@ -133,7 +133,10 @@ const config = {
       },
     }),
     new CleanWebpackPlugin(),
-    new CriticalCssPlugin(),
+    new CriticalCssPlugin({
+      src: "index.html",
+      target: "index.html",
+    }),
     // new HTMLInlineCSSWebpackPlugin({
     //   filter(fileName) {
     //     console.log(fileName, ...arguments, "-----");

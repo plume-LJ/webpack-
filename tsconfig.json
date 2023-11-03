@@ -12,7 +12,8 @@
     "noUnusedLocals": true,
     "pretty": true,
     "lib": [
-      "esnext"
+      "esnext",
+      "DOM"
     ]
   },
   "files": [
